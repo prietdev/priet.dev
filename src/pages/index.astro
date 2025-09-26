@@ -1,11 +1,13 @@
 ---
-// Test Utils
+/* Test Utils
 import TextAndColorsTest from "../components/TextAndColorsTest.astro"
-
+*/
 import MainLayout from "../layouts/MainLayout.astro"
+import AboutHero from "../components/AboutHero.astro"
 ---
 
 <MainLayout title="Página Principal">
-    This the main page
-    <TextAndColorsTest />
+    <section class="flex items-center justify-center flex-rows">
+        <AboutHero />
+    </section>
 </MainLayout>
