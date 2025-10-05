@@ -1,6 +1,6 @@
 // TODO: Add Search Navegation
 
-export function SearchNav() {
+export default function SearchNav() {
     return (
         <div>
             Seach
