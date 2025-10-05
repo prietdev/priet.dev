@@ -1,11 +1,10 @@
 ---
 import "../styles/global.css"
 
-import Header from "../components/Header.astro"
+import Header from "../components/Header.jsx"
 import Footer from "../components/Footer.astro"
 
-import { defaultTitle } from "../const/defaultTitle"
-import { defaultDescription, messageErrorDescription } from "../const/defaultDescription"
+import { DefaultsValues } from "../const/defaultValuesString"
 
 interface Props {
     title?: string
@@ -13,8 +12,8 @@ interface Props {
 }
 
 const { 
-    title = defaultTitle,
-    description = defaultDescription || messageErrorDescription
+    title = DefaultsValues.DefaultTitlePage,
+    description = DefaultsValues.DefaultDescriptionPage || DefaultsValues.DefaultMessageNoFoundDescription
 } = Astro.props
 ---
 
@@ -32,11 +31,13 @@ const {
     
     <meta name="description" content={description}>
 </head>
-<body class="bg-softClound text-charcoalBlack">
-    <Header />
-    <main class="px-4">
-        <slot />
-    </main>
+<body class="bg-softClound text-charcoalBlack overflow-x-hidden">
+    <Header client:load />
+    <div class="py-[50rem]">
+        <main class="px-4">
+            <slot />
+        </main>
+    </div>
     <Footer />
 </body>
 </html>
