@@ -1,43 +1,44 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
 
-import Header from "../components/Header.jsx"
-import Footer from "../components/Footer.astro"
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.astro";
 
-import { DefaultsValues } from "../const/defaultValuesString"
+import { DefaultsValues } from "../const/defaultValuesString";
 
 interface Props {
-    title?: string
-    description?: string
+  title?: string;
+  description?: string;
 }
 
-const { 
-    title = DefaultsValues.DefaultTitlePage,
-    description = DefaultsValues.DefaultDescriptionPage || DefaultsValues.DefaultMessageNoFoundDescription
-} = Astro.props
+const {
+  title = DefaultsValues.DefaultTitlePage,
+  description = DefaultsValues.DefaultDescriptionPage ||
+    DefaultsValues.DefaultMessageNoFoundDescription,
+} = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>
-        prietdev | {title}
+      prietdev | {title}
     </title>
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
-    <meta name="description" content={description}>
-</head>
-<body class="bg-softClound text-charcoalBlack overflow-x-hidden">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <meta name="description" content={description} />
+  </head>
+  <body class="bg-softClound text-charcoalBlack overflow-x-hidden">
     <Header client:load />
-    <div class="py-[50rem]">
-        <main class="px-4">
-            <slot />
-        </main>
+    <div class="py-[5rem] lg:py-[10rem]">
+      <main class="px-4">
+        <slot />
+      </main>
     </div>
     <Footer />
-</body>
+  </body>
 </html>

@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <header
-      className={`shadow-lg fixed z-50 top-0 flex justify-between w-full mx-auto items-center px-16 py-4 transition-colors duration-300 ${
+      className={`shadow fixed z-50 top-0 flex justify-between w-full mx-auto items-center px-16 py-4 transition-colors duration-300 ${
         scrolled
           ? "bg-[#e8f4f8]/90 backdrop-blur-md"
           : "bg-[#e8f4f8]/10"
