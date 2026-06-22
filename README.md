@@ -1,6 +1,6 @@
 # priet.dev - Porfolio Personal
 
-<img src="/prietdev-porfolio.webp" alt="Photo a Website">
+<img src="/src/assets/prietdev-porfolio.webp" alt="Photo a Website">
 
 Este es unos de mis primeros proyectos personales más elavorado que no haya tenido. Siempre me gusto la idea de hacer mi propia web y esta es mi primer camino directo que posiblemente me dará la posibilidad de que mucha gente reconozca mi trabajo y que honestamente, esto es un logro para mí.
 
