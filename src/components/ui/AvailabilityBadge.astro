@@ -1,0 +1,27 @@
+---
+interface Props {
+  available?: boolean;
+}
+
+const { available = true } = Astro.props;
+---
+
+<span
+  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5"
+>
+  {
+    available ? (
+      <>
+        <span class="text-green-600 dark:text-green-400">
+          ✅ Disponible para proyectos
+        </span>
+      </>
+    ) : (
+      <>
+        <span class="text-red-600 dark:text-red-400">
+          ⛔ No disponible para proyectos
+        </span>
+      </>
+    )
+  }
+</span>

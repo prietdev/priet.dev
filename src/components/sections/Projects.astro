@@ -1,0 +1,71 @@
+---
+import DesktopCode from "../icons/DesktopCode.astro";
+import SocialLinks from "../ui/SocialLinks.astro";
+import GitHub from "../icons/GitHub.astro";
+import Tailwindcss from "../icons/Tailwindcss.astro";
+import AstroIcon from "../icons/AstroIcon.astro";
+---
+
+<section id="proyectos" class="w-full max-w-5xl">
+  <div class="mb-4">
+    <h2
+      class="text-3xl font-bold flex items-center gap-2 text-zinc-900 dark:text-white"
+    >
+      <DesktopCode class="stroke-zinc-900 dark:stroke-white" /> Proyectos
+    </h2>
+    <div class="h-0.5 w-40 bg-linear-to-r from-blue-500 to-transparent"></div>
+  </div>
+
+  <article
+    class="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start"
+  >
+    <img
+      class="rounded-2xl shadow-2xl w-full max-w-sm md:w-80 lg:w-96 border-2 border-gray-300 dark:border-gray-600 transition-all duration-300 hover:border-blue-400 hover:shadow-sky-500/25 shrink-0"
+      src="/prietdev-porfolio.webp"
+      alt="Captura de pantalla del proyecto Colegio Achucarro"
+      loading="lazy"
+    />
+
+    <div class="flex gap-4 flex-col">
+      <header>
+        <h3
+          class="text-xl sm:text-2xl font-bold flex items-center gap-2 text-zinc-900 dark:text-white"
+        >
+          Porfolio Personal
+          <span
+            class="w-2 h-2 bg-green-500 rounded-full shadow shadow-emerald-500"
+            title="Proyecto activo"
+            aria-label="Proyecto activo"></span>
+        </h3>
+        <div class="flex items-center gap-x-3 my-2 flex-wrap gap-y-2">
+          <span
+            class="font-bold text-sm flex gap-1 border-2 border-purple-300 dark:border-purple-900 bg-purple-100 dark:bg-purple-700 text-purple-900 dark:text-white max-w-fit items-center rounded-2xl px-2 py-px transition-shadow duration-300 hover:shadow hover:shadow-fuchsia-500/25"
+          >
+            <AstroIcon class="stroke-purple-900 dark:stroke-white" /> Astro
+          </span>
+          <span
+            class="font-bold text-sm flex gap-1 border-2 border-blue-300 dark:border-blue-900 bg-blue-100 dark:bg-blue-700 text-blue-900 dark:text-white max-w-fit items-center rounded-2xl px-2 py-px transition-shadow duration-300 hover:shadow hover:shadow-sky-500/25"
+          >
+            <Tailwindcss class="stroke-blue-900 dark:stroke-white" /> TailwindCSS
+          </span>
+        </div>
+        <p
+          class="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed"
+        >
+          Un projecto en español dedicado exclusivamente para mostrar el perfil
+          profesional de Martin Prieto. Este es uno de mis primeros proyectos
+          que escalarón bastante en terminos de diseño como también
+          adaptabilidad.
+        </p>
+      </header>
+
+      <footer>
+        <div class="flex gap-3 flex-wrap">
+          <SocialLinks href="https://github.com/prietdev/priet.dev">
+            <GitHub class="stroke-zinc-900 dark:stroke-white" /> Código
+          </SocialLinks>
+        </div>
+      </footer>
+    </div>
+  </article>
+</section>

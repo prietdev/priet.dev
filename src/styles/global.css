@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "tailwind-animations";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-skyblue: oklch(0.7813 0.1054 218.45);
+}
+
+body {
+  font-family: "Nunito Variable", sans-serif;
+}
+
+@view-transition {
+  navigation: auto;
+}

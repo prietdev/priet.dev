@@ -1,0 +1,208 @@
+---
+import PrietDev from "../icons/PrietDev.astro";
+import Menu from "../icons/Menu.astro";
+import Moon from "../icons/Moon.astro";
+import Sun from "../icons/Sun.astro";
+
+const nav = [
+  { name: "Sobre Mí", href: "/#sobre-mi" },
+  { name: "Proyectos", href: "/#proyectos" },
+  { name: "Experiencia", href: "/#experiencia" },
+  { name: "Contacto", href: "mailto:priet.dev@gmail.com" },
+];
+---
+
+<header
+  id="header"
+  class="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full px-4 sm:px-6"
+>
+  <div
+    id="header-content"
+    class="mx-auto max-w-6xl flex items-center justify-between px-9 py-3 rounded-full border border-transparent transition-all duration-300"
+  >
+    <a
+      href="/"
+      class="text-3xl transition-transform duration-300 hover:scale-110 z-10"
+    >
+      <PrietDev />
+    </a>
+
+    <!-- Desktop nav -->
+    <nav
+      class="hidden md:flex items-center gap-x-6 font-medium"
+      aria-label="Navegación principal"
+    >
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="text-base text-zinc-900 dark:text-zinc-200 transition-colors duration-200 py-px px-3 border-2 border-transparent hover:bg-blue-100 dark:hover:bg-blue-900 hover:border-blue-400 rounded-full"
+          >
+            {item.name}
+          </a>
+        ))
+      }
+
+      <div class="flex items-center gap-x-6">
+        <div class="w-px h-6 bg-zinc-300 dark:bg-zinc-500"></div>
+        <button
+          id="theme-toggle-desktop"
+          class="transition-colors duration-200 p-2 border-2 border-transparent hover:bg-blue-100 dark:hover:bg-blue-900 hover:border-blue-400 rounded-full text-zinc-900 dark:text-zinc-200"
+          aria-label="Cambiar tema"
+        >
+          <span class="icon-sun"><Sun /></span>
+          <span class="icon-moon"><Moon /></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile: tema + hamburguesa -->
+    <div class="flex md:hidden items-center gap-x-2 z-10">
+      <button
+        id="theme-toggle-mobile"
+        class="transition-colors duration-200 p-2 border-2 border-transparent hover:bg-blue-100 dark:hover:bg-blue-900 hover:border-blue-400 rounded-full text-zinc-900 dark:text-zinc-200"
+        aria-label="Cambiar tema"
+      >
+        <span class="icon-sun"><Sun /></span>
+        <span class="icon-moon"><Moon /></span>
+      </button>
+
+      <button
+        id="menu-toggle"
+        class="transition-colors duration-200 p-2 border-2 border-transparent hover:bg-blue-100 dark:hover:bg-blue-900 hover:border-blue-400 rounded-full text-zinc-900 dark:text-zinc-200"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Menu />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden max-h-0 transition-[max-height,opacity] duration-300 ease-in-out opacity-0"
+    aria-hidden="true"
+  >
+    <nav
+      class="mx-auto max-w-6xl mt-2 rounded-2xl border border-zinc-200 dark:border-white/8 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl px-4 py-3 flex flex-col gap-y-1"
+      aria-label="Navegación móvil"
+    >
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="mobile-link text-base text-zinc-900 dark:text-zinc-200 px-3 py-2.5 rounded-xl border-2 border-transparent hover:bg-blue-100 dark:hover:bg-blue-900/60 hover:border-blue-400 transition-colors duration-200"
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  #header-content {
+    background-color: transparent;
+  }
+
+  :global(html:not(.dark)) #header-content.scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+  }
+
+  :global(html.dark) #header-content.scrolled {
+    background-color: rgba(9, 9, 11, 0.72);
+    backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+  }
+</style>
+
+<script is:inline>
+  // ── Scroll: solo agrega/quita una clase ───────────────────────
+  const content = document.getElementById("header-content");
+  if (content) {
+    const updateNavbar = () => {
+      content.classList.toggle("scrolled", window.scrollY > 80);
+    };
+    updateNavbar();
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+  }
+
+  // ── Hamburger menu ───────────────────────────────────────────
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  if (toggle && menu) {
+    let isOpen = false;
+
+    const openMenu = () => {
+      isOpen = true;
+      menu.style.maxHeight = menu.scrollHeight + "px";
+      menu.style.opacity = "1";
+      menu.setAttribute("aria-hidden", "false");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Cerrar menú");
+    };
+
+    const closeMenu = () => {
+      isOpen = false;
+      menu.style.maxHeight = "0";
+      menu.style.opacity = "0";
+      menu.setAttribute("aria-hidden", "true");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Abrir menú");
+    };
+
+    toggle.addEventListener("click", () => (isOpen ? closeMenu() : openMenu()));
+
+    menu.querySelectorAll(".mobile-link").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (isOpen && !document.getElementById("header").contains(e.target))
+        closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen) closeMenu();
+    });
+  }
+
+  // ── Theme toggle ─────────────────────────────────────────────
+  const themeButtons = [
+    document.getElementById("theme-toggle-desktop"),
+    document.getElementById("theme-toggle-mobile"),
+  ];
+
+  const updateIcons = (isDark) => {
+    themeButtons.forEach((btn) => {
+      if (!btn) return;
+      btn.querySelector(".icon-sun").style.display = isDark ? "none" : "inline";
+      btn.querySelector(".icon-moon").style.display = isDark
+        ? "inline"
+        : "none";
+    });
+  };
+
+  const applyTheme = (isDark) => {
+    document.documentElement.classList.toggle("dark", isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    updateIcons(isDark);
+  };
+
+  themeButtons.forEach((btn) => {
+    btn?.addEventListener("click", () => {
+      const isDark = !document.documentElement.classList.contains("dark");
+      applyTheme(isDark);
+    });
+  });
+
+  updateIcons(document.documentElement.classList.contains("dark"));
+</script>

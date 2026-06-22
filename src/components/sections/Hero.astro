@@ -1,0 +1,77 @@
+---
+import PrietDev from "../icons/PrietDev.astro";
+import AvailabilityBadge from "../ui/AvailabilityBadge.astro";
+import SocialLinks from "../ui/SocialLinks.astro";
+import Mail from "../icons/Mail.astro";
+import GitHub from "../icons/GitHub.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+import World from "../icons/World.astro";
+
+const available = false;
+---
+
+<section class="w-full max-w-5xl min-h-[90vh] flex justify-center items-center">
+  <article class="flex flex-col gap-y-4">
+    <header class="flex flex-col gap-y-3">
+      <div class="flex items-center gap-x-2 animate-fade-in-up">
+        <div class="relative inline-block">
+          <img
+            class="size-16 sm:size-20 rounded-full object-cover ring-2 ring-black/10 dark:ring-white/10"
+            src="https://avatars.githubusercontent.com/u/232128269?v=4"
+            alt="Foto de perfil de Martin Prieto"
+            width="80"
+            height="80"
+          />
+          {
+            available ? (
+              <span class="absolute bottom-0.5 right-0.5 size-3.5 rounded-full bg-green-500 ring-2 ring-slate-100 dark:ring-slate-950 shadow-[0_0_6px_1px_rgba(34,197,94,0.6)]" />
+            ) : (
+              <span class="absolute bottom-0.5 right-0.5 size-3.5 rounded-full bg-red-500 ring-2 ring-slate-100 dark:ring-slate-950 flex items-center justify-center">
+                <span class="text-[7px] font-extrabold text-white leading-none">
+                  —
+                </span>
+              </span>
+            )
+          }
+        </div>
+        <AvailabilityBadge available={available} />
+      </div>
+      <div class="flex flex-col gap-y-1">
+        <h1
+          class="text-3xl sm:text-4xl tracking-wide font-bold leading-tight text-zinc-900 dark:text-white animate-fade-in-up animate-delay-100"
+        >
+          Martin Prieto 👨‍💻
+        </h1>
+        <div
+          class="h-0.5 w-40 bg-linear-to-r from-blue-500 to-transparent animate-fade-in-up animate-delay-100"
+        >
+        </div>
+        <p
+          class="text-base sm:text-lg text-gray-600 dark:text-gray-400 text-balance max-w-lg leading-relaxed animate-fade-in-up animate-delay-200"
+        >
+          Desarrollador frontend, téc. en tecnologías informáticas y
+          desarrollador de videojuegos.
+        </p>
+        <small
+          class="text-gray-500 dark:text-gray-500 flex gap-x-1.5 items-center animate-fade-in-up animate-delay-300"
+        >
+          <World class="size-4 stroke-gray-500" />
+          Lambaré, Paraguay
+        </small>
+      </div>
+    </header>
+    <footer
+      class="flex gap-x-3 gap-y-2 flex-wrap animate-fade-in-up animate-delay-400"
+    >
+      <SocialLinks href="mailto:priet.dev@gmail.com">
+        <Mail class="stroke-gray-500 dark:stroke-gray-400" /> Email
+      </SocialLinks>
+      <SocialLinks href="https://github.com/prietdev">
+        <GitHub class="stroke-gray-500 dark:stroke-gray-400" /> GitHub
+      </SocialLinks>
+      <SocialLinks href="https://www.linkedin.com/in/prietbev/">
+        <LinkedIn class="stroke-gray-500 dark:stroke-gray-400" /> LinkedIn
+      </SocialLinks>
+    </footer>
+  </article>
+</section>

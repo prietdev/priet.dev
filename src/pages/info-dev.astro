@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import * as ReadMe from "../../README.md";
+import { prose } from "../lib/styles-markdown";
+
+const { Content } = ReadMe;
+---
+
+<Layout title="Información del Desarrollo">
+  <section
+    class="my-20 sm:px-16 md:px-32 lg:px-64 [&_p]:my-2 text-zinc-900 dark:text-zinc-100"
+  >
+    <article class={prose}>
+      <Content />
+    </article>
+  </section>
+</Layout>
